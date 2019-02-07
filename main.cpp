@@ -1,37 +1,49 @@
 #include <iostream>
 using namespace std;
-
-int main(){
-	
-	char op = 'A';
-	char again = 'Y';
+		
 	int num1 = 0;
 	int num2 = 0;
 	
-	cout << "Our C++ Calculator\n";
-	
-	while('n' != again){
-		cout << "(A)dd ";
-		cin >> op;
-		
+	void printoptions(){
 		cout << "Enter your first number: ";
 		cin >> num1;
 		cout << "Enter your second number: ";
 		cin >> num2;
+	}
+	
+int main(){
+	
+	char op = 'A';
+	char again = 'Y';
+	
+	cout << "Our C++ Calculator\n";
+	do {
+		cout << "(A)dd or (S)ubtract?";
+		cin >> op;
+	
 		
-		if(('A' == op) || ('a' == op)){
-			cout << endl << num1 << " + " << num2 << " = "
+		switch( op ) {
+			case 'a':
+			case 'A':
+				printoptions();
+				cout << endl << num1 << " + " << num2 << " = "
 				<< (num1 + num2) << endl;
-		} else if (('S' == op) || ('s' == op)){
-			cout << endl << num1 << " + " << num2 << " = "
+				break;
+			case 's':
+			case 'S':
+				printoptions();
+				cout << endl << num1 << " + " << num2 << " = "
 				<< (num1 + num2) << endl;
-		} else {
-			cout << op << " is not a valid option..." << endl;
-		}
+				break;
+			default:
+				cout << op << " is not a valid option..." << endl;
+		}	
+		
 		
 		cout << endl << " Do you want to use Calculator again (Y/n)?";
 		cin >> again;
-	}
+	} while('n' != again);
+		
 	
 	return 0;
 }
